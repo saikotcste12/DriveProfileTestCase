@@ -6,7 +6,7 @@ class FirstTimeClick(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(20)
 
     def test_first_time_click(self):
         driver = self.driver
