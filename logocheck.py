@@ -2,17 +2,16 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 
-class FirstTimeClick(unittest.TestCase):
+class LogoCheck(unittest.TestCase):
 
     def setUp(self):
         self.driver = webdriver.Firefox()
-        self.driver.implicitly_wait(30)
 
-    def test_first_time_click(self):
+    def test_logo_check_img(self):
         driver = self.driver
         driver.get("http://localhost:8069/")
         driver.maximize_window()
-        elem = driver.find_element_by_xpath("//*[@id='wrapwrap']/div/nav/a/img")
+        elem = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath("//*[@id='wrapwrap']/div/nav/a/img"))
         elem.click()
 
     def tearDown(self):
