@@ -13,6 +13,7 @@ class LogoCheck(unittest.TestCase):
         driver.maximize_window()
         elem = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath("//*[@id='wrapwrap']/div/nav/a/img"))
         elem.click()
+        self.assertIn("Homepage", driver.title)
 
     def tearDown(self):
         self.driver.quit()
