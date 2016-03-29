@@ -32,8 +32,5 @@ class ContactUs(unittest.TestCase):
         firstname_elem.submit()
         driver.quit()
 
-
-
-
 if __name__ == "__main__":
     unittest.main()
