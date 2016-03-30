@@ -30,6 +30,7 @@ class ContactUs(unittest.TestCase):
         msg_elem.send_keys("This is message for contract page for testing purpose")
 
         firstname_elem.submit()
+        self.assertIn("Contact us", driver.title)
         driver.quit()
 
 if __name__ == "__main__":
