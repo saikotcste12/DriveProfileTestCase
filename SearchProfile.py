@@ -10,7 +10,7 @@ class SearchProfile(unittest.TestCase):
         self.base_url = "http://localhost:8069/"
         self.driver.maximize_window()
 
-    def test_search_profile(self):
+    def base_case(self):
         driver = self.driver
         driver.get(self.base_url)
         profilesearchXpath    = "//*[@id='wrapwrap']/div/div[2]/form/div/span/button"
@@ -23,22 +23,17 @@ class SearchProfile(unittest.TestCase):
         profiletextelement.send_keys("test")
         profilesearchelement.click()
 
+    def test_search_profile(self):
+        self.base_case()
+        self.drive.quit()
+
     def test_search_result(self):
-        driver = self.driver
-        driver.get(self.base_url)
-        profilesearchXpath    = "//*[@id='wrapwrap']/div/div[2]/form/div/span/button"
-        profiletextfieldXpath = "//input[contains(@placeholder,'Search a Profile')]"
-        searchwait = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath(profilesearchXpath))
-        textwait   = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath(profiletextfieldXpath))
-        profilesearchelement = searchwait
-        profiletextelement   = textwait
-        profiletextelement.clear()
-        profiletextelement.send_keys("test")
-        profilesearchelement.click()
+        self.base_case()
         profileresultXpath = "//span[contains(.,'TesterEquafy Premium')]"
-        profileresultwait = WebDriverWait(driver, 30).until(lambda  driver: driver.find_element_by_xpath(profileresultXpath))
+        profileresultwait = WebDriverWait(self.driver, 30).until(lambda  driver: driver.find_element_by_xpath(profileresultXpath))
         profileresultelement  = profileresultwait
         profileresultelement.click()
+        self.drive.quit()
 
     #def tearDown(self):
        #self.driver.quit()
