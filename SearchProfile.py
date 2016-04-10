@@ -35,8 +35,5 @@ class SearchProfile(unittest.TestCase):
         profileresultelement.click()
         self.drive.quit()
 
-    #def tearDown(self):
-       #self.driver.quit()
-
 if __name__ == "__main__":
     unittest.main()
