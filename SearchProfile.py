@@ -15,8 +15,8 @@ class SearchProfile(unittest.TestCase):
         driver.get(self.base_url)
         profilesearchXpath    = "//*[@id='wrapwrap']/div/div[2]/form/div/span/button"
         profiletextfieldXpath = "//input[contains(@placeholder,'Search a Profile')]"
-        searchwait = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath(profilesearchXpath))
-        textwait   = WebDriverWait(driver, 30).until(lambda driver: driver.find_element_by_xpath(profiletextfieldXpath))
+        searchwait = WebDriverWait(self.driver, 30).until(lambda driver: driver.find_element_by_xpath(profilesearchXpath))
+        textwait   = WebDriverWait(self.driver, 30).until(lambda driver: driver.find_element_by_xpath(profiletextfieldXpath))
         profilesearchelement = searchwait
         profiletextelement   = textwait
         profiletextelement.clear()
@@ -25,7 +25,7 @@ class SearchProfile(unittest.TestCase):
 
     def test_search_profile(self):
         self.base_case()
-        self.drive.quit()
+        #self.driver.quit()
 
     def test_search_result(self):
         self.base_case()
@@ -33,7 +33,9 @@ class SearchProfile(unittest.TestCase):
         profileresultwait = WebDriverWait(self.driver, 30).until(lambda  driver: driver.find_element_by_xpath(profileresultXpath))
         profileresultelement  = profileresultwait
         profileresultelement.click()
-        self.drive.quit()
+        #self.driver.quit()
+    def tearDown(self):
+        self.driver.quit()
 
 if __name__ == "__main__":
     unittest.main()
