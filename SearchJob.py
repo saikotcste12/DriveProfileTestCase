@@ -14,7 +14,7 @@ class SearchJob(unittest.TestCase):
         driver.get(self.base_url)
         jobsearchXpath = "//*[@id='wrapwrap']/div/div[3]/form/div/span/button"
         jobtextfieldXpath = "//input[contains(@placeholder,'Search a Job')]"
-        searchwait = WebDriverWait(self.driver, 30).until(lambda driver: driver.find_element_by_xpath(jobsearchXpath))
+        searchwait = WebDriverWait(self.driver, 60).until(lambda driver: driver.find_element_by_xpath(jobsearchXpath))
         textwait = WebDriverWait(self.driver, 30).until(lambda driver: driver.find_element_by_xpath(jobtextfieldXpath))
         jobsearchelement = searchwait
         jobtextelement = textwait
